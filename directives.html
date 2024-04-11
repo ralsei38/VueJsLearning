@@ -8,9 +8,16 @@
     <div id="app">
         <ul>
             <li v-for="article in articles" v-if="article.prix > 0" >
-                {{ article.label }}:{{ article.prix }}
+                {{ article.label }}:{{ article.prix }}€</br>
+                <!-- apparently we cannot inject data using {{}} in an HTLM attribute anymore, probably for convenience / security concerns.
+                     We need to use "bindings", as below
+                -->
+                <a :href="article.url">{{ article.label }}</a>
             </li>
         </ul>
+        <p>Prix total: {{ somme }}€</p>
+
+        <p>lien vers les fruits</p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
 
@@ -23,23 +30,34 @@
                         {
                             label: 'pomme',
                             prix: 0.50,
+                            url: "pomme.html",
                         },
                         {
                             label: 'poire',
                             prix: 0.50,
+                            url: "poire.html",
                         },
                         {
                             label: 'livre',
                             prix: 0.50,
+                            url: "livre.html",
                         },
                         {
                             label: 'pizza',
                             prix: 0,
+                            url: "pizza.html",
                         },
 
 
                     ],
                 },
+                computed:{
+                    somme() {
+                        let total = 0;
+                        this.articles.forEach(article => {total+= article.prix});
+                        return total;
+                    }
+                }
             }
         );
     </script>
