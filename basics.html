@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ welcome_msg }}</h1>
+        <ul>
+            <li>pomme {{ pommes }}</li>
+            <li>poire {{ poires }}</li>
+            <li>livre {{ livres }}</li>
+        </ul>
+        <p>somme:  {{ pommes  + poires  + livres }}</p> <!--logique dans la vue + maintenance compliquée...-->
+        <p>somme:  {{ somme }}</p> <!--logique dans le script tag, valeur computé pour simplifier la maintenance -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                welcome_msg: "Bonjour !",
+                pommes: 2,
+                poires: 3,
+                livres: 12,
+            },
+            computed: {
+                somme(){
+                    return this.pommes + this.poires + this.livres
+                }
+            }
+        });
+    </script>
+</body>
+</html>

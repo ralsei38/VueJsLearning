@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="article in articles" v-if="article.prix > 0" >
+                {{ article.label }}:{{ article.prix }}
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+
+    <script>
+        const app = new Vue(
+            {
+                el: "#app",
+                data:{
+                    articles: [
+                        {
+                            label: 'pomme',
+                            prix: 0.50,
+                        },
+                        {
+                            label: 'poire',
+                            prix: 0.50,
+                        },
+                        {
+                            label: 'livre',
+                            prix: 0.50,
+                        },
+                        {
+                            label: 'pizza',
+                            prix: 0,
+                        },
+
+
+                    ],
+                },
+            }
+        );
+    </script>
+</body>
+</html>
